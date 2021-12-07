@@ -1,0 +1,50 @@
+---
+title: 'How to change the value of a variable outside of the scope within a closure function in PHP'
+date: '2021-12-07'
+thumbnail: ./thumbnail.png
+published: true
+---
+
+![Thumbnail](./thumbnail.png)
+
+<br />
+
+You can change the value of a variable outside a closure by passing it as a reference and not a copy (making the variable available inside the closure) prepending & to the variable in the use statement. As shown in the official documentation of PHP, the syntax to pass a variable by reference is the following
+
+```php
+$data = [
+    ['key' => 1, 'value' => 'A'],
+    ['key' => 2, 'value' => 'B'],
+    ['key' => 3, 'value' => 'C'],
+];
+
+$allKeys = [];
+
+$allValues = array_map(function($v) use (&$allKeys){
+
+    // push key into allKeys
+    $allKeys[] = $v['key'];
+
+    return $v['value'];
+}, $data);
+
+print_r($allKeys);
+/*
+Array
+(
+    [0] => 1
+    [1] => 2
+    [2] => 3
+)
+*/
+
+print_r($allValues);
+/*
+Array
+(
+    [0] => A
+    [1] => B
+    [2] => C
+)
+*/
+```
