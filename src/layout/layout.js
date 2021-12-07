@@ -1,10 +1,11 @@
 import { Container } from '@mui/material';
+import { orange } from '@mui/material/colors';
 import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import Footer from './footer';
 import Header from './header';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
+import { Helmet } from 'react-helmet';
 
 const theme = createTheme({
 	status: {
@@ -15,9 +16,15 @@ const theme = createTheme({
 	},
 });
 
-const Layout = ({ children }) => {
+const Layout = ({ children, helmetProps = {} }) => {
 	return (
 		<React.Fragment>
+			<Helmet
+				htmlAttributes={{
+					lang: 'en',
+				}}
+				{...helmetProps}
+			/>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<header style={{ marginBottom: 30 }}>

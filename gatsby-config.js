@@ -1,10 +1,11 @@
 module.exports = {
-  pathPrefix: '/blog',
+	pathPrefix: '/blog',
 	siteMetadata: {
 		siteUrl: 'https://useforcode.com',
 		title: 'Use For Code',
 	},
 	plugins: [
+		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,

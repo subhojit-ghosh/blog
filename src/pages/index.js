@@ -6,7 +6,7 @@ import Layout from '../layout/layout';
 
 const IndexPage = ({ data }) => {
 	return (
-		<Layout>
+		<Layout helmetProps={{ title: data.site.siteMetadata.title }}>
 			<Grid container spacing={2}>
 				{data.allMdx.nodes.map((node) => (
 					<Grid item xs={12} sm={6} md={4} lg={3} key={node.slug}>

@@ -1,8 +1,8 @@
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import * as React from 'react';
 import Layout from '../layout/layout';
-import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 deckDeckGoHighlightElement();
 
 const BlogPosts = ({ data }, pageContext) => {
@@ -10,7 +10,7 @@ const BlogPosts = ({ data }, pageContext) => {
 	const { previous, next } = pageContext;
 
 	return (
-		<Layout>
+		<Layout helmetProps={{ title: frontmatter.title }}>
 			<h1>{frontmatter.title}</h1>
 			<p>{frontmatter.date}</p>
 			<article>
